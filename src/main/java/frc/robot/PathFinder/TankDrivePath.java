@@ -14,38 +14,40 @@ import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.Waypoint;
 import jaci.pathfinder.Trajectory.FitMethod;
-import jaci.pathfinder.followers.EncoderFollower;
+import jaci.pathfinder.followers.DistanceFollower;
 import jaci.pathfinder.modifiers.TankModifier;
 
 /**
  * Add your docs here.
  */
 public class TankDrivePath {
-    EncoderFollower leftFollower;
-    EncoderFollower rightFollower;
-    public TankDrivePath(ArrayList<Waypoint> arr){
-        Waypoint[] points = arr.toArray(new Waypoint[0]);
+    public TankDrivePath(){
+
+    }
+    
+    public DistanceFollower[] generate(){
+        Waypoint[] points = {new Waypoint(0, 0, Pathfinder.d2r(0)), 
+            new Waypoint(1, 1, Pathfinder.d2r(0)),
+            new Waypoint(1, 1, Pathfinder.d2r(60))};
         Trajectory.Config config = new Trajectory.Config(FitMethod.HERMITE_CUBIC, 
-                                                         Trajectory.Config.SAMPLES_HIGH, 
-                                                         Drivetrain.P, 
-                                                         Drivetrain.I, 
-                                                         Drivetrain.D, 
-                                                         Drivetrain.VELOCITY);
+                                        Trajectory.Config.SAMPLES_HIGH, 
+                                        Drivetrain.P, 
+                                        Drivetrain.I, 
+                                        Drivetrain.D, 
+                                        Drivetrain.VELOCITY);
         Trajectory path = Pathfinder.generate(points, config);
-        
+
         TankModifier modifier = new TankModifier(path);
         modifier.modify(Drivetrain.WHEELBASE_WIDTH);
 
         Trajectory leftTrajectory = modifier.getLeftTrajectory();
         Trajectory rightTrajectory = modifier.getRightTrajectory();
 
-        leftFollower = new EncoderFollower(leftTrajectory);
-        rightFollower = new EncoderFollower(rightTrajectory);
-    }
-    public EncoderFollower getLeftFollower(){
-        return leftFollower;
-    }
-    public EncoderFollower getRightFollower(){
-        return rightFollower;
+        DistanceFollower leftFollower = new DistanceFollower(leftTrajectory);
+        DistanceFollower rightFollower = new DistanceFollower(rightTrajectory);
+        
+        DistanceFollower[] followers = {leftFollower, rightFollower};
+        
+        return followers;
     }
 }
