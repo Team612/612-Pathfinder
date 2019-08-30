@@ -3,6 +3,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.Autonomous.AutoDrive;
 
 public class OI {
   
@@ -34,5 +35,6 @@ public class OI {
   public static JoystickButton gunner_button_LJ   	= new JoystickButton(gunner,9);
   public static JoystickButton gunner_button_RJ   	= new JoystickButton(gunner,10);
 
+  driver_button_A.whileHeld(new AutoDrive());
 
 }

@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.TankDrive;
+import frc.robot.commands.DefaultDrive;
 
 
 public class Drivetrain extends Subsystem {
@@ -18,6 +18,6 @@ public class Drivetrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     
-    setDefaultCommand(new TankDrive());
+    setDefaultCommand(new DefaultDrive());
   }
 }

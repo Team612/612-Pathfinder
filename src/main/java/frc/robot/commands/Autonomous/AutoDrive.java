@@ -11,7 +11,7 @@ public class AutoDrive extends Command {
   DistanceFollower[] followers;
   
   public AutoDrive() {
-    requires(Robot.drivetrain);
+    
   }
 
   @Override
