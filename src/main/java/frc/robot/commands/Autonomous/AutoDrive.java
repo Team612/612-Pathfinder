@@ -22,7 +22,7 @@ public class AutoDrive extends Command {
 
   @Override
   protected void execute() {
-    if (!followers[0].isFinished()  || !followers[1].isFinished()){
+    if (!followers[0].isFinished() && !followers[1].isFinished()){
       
       double leftVal = followers[0].calculate(followers[0].getSegment().position); 
       double rightVal = followers[1].calculate(followers[1].getSegment().position); 
