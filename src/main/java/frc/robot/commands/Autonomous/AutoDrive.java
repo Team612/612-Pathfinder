@@ -7,7 +7,6 @@ import jaci.pathfinder.followers.DistanceFollower;
 
 public class AutoDrive extends Command {
   
-  TankDrivePath tankDrivePath;
   DistanceFollower[] followers;
   
   public AutoDrive() {
@@ -16,8 +15,7 @@ public class AutoDrive extends Command {
 
   @Override
   protected void initialize() {
-    tankDrivePath = new TankDrivePath();
-   followers = tankDrivePath.generate();
+   followers = TankDrivePath.generate();
   }
 
   @Override

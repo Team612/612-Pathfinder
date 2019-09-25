@@ -7,8 +7,6 @@
 
 package frc.robot.PathFinder;
 
-import java.util.*;
-
 import frc.robot.subsystems.Drivetrain;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
@@ -21,11 +19,8 @@ import jaci.pathfinder.modifiers.TankModifier;
  * Add your docs here.
  */
 public class TankDrivePath {
-    public TankDrivePath(){
-
-    }
-    
-    public DistanceFollower[] generate(){
+   
+    public static DistanceFollower[] generate(){
         Waypoint[] points = {new Waypoint(0, 0, Pathfinder.d2r(0)), 
             new Waypoint(1, 1, Pathfinder.d2r(0)),
             new Waypoint(1, 1, Pathfinder.d2r(60))};
@@ -36,6 +31,8 @@ public class TankDrivePath {
                                         Drivetrain.D, 
                                         Drivetrain.VELOCITY);
         Trajectory path = Pathfinder.generate(points, config);
+
+        System.out.println("Num of segments: " + path.segments.length);
 
         TankModifier modifier = new TankModifier(path);
         modifier.modify(Drivetrain.WHEELBASE_WIDTH);
