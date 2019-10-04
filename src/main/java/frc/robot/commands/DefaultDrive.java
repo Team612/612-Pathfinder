@@ -19,21 +19,21 @@ public class DefaultDrive extends Command {
   @Override
   protected void execute() {
       // Left joystick controller side
-      if (Math.abs(OI.driver.getY(Hand.kLeft)) < .1) {
+      if (Math.abs(OI.driver.getY(Hand.kLeft)) < .1) { // Deadzone calculations
         Robot.drivetrain.talon_BL.set(0);
         Robot.drivetrain.talon_FL.set(0);
       } else {
-        Robot.drivetrain.talon_FL.set(OI.driver.getY(Hand.kLeft));
-        Robot.drivetrain.talon_BL.set(OI.driver.getY(Hand.kLeft));
+        Robot.drivetrain.talon_FL.set(-1 * OI.driver.getY(Hand.kLeft)); // GOOD
+        Robot.drivetrain.talon_BL.set(-1 * OI.driver.getY(Hand.kLeft)); // BAD
       }
     
       // Right joystick controller side
-      if (Math.abs(OI.driver.getY(Hand.kRight)) < .1) { 
+      if (Math.abs(OI.driver.getY(Hand.kRight)) < .1) { // Deadzone calculations
         Robot.drivetrain.talon_FR.set(0);
         Robot.drivetrain.talon_BR.set(0);
       } else {
-        Robot.drivetrain.talon_FR.set(OI.driver.getY(Hand.kRight));
-        Robot.drivetrain.talon_BR.set(OI.driver.getY(Hand.kRight));
+        Robot.drivetrain.talon_FR.set(OI.driver.getY(Hand.kRight)); // GOOD
+        Robot.drivetrain.talon_BR.set(OI.driver.getY(Hand.kRight)); // Bad
       }
 
   }

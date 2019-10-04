@@ -7,9 +7,9 @@ public class RobotMap {
   public static final int GUNNER_PORT            = 1;
 
   // Talons for drivetrain
-  public static int TALON_PORT_FL                = 6;
-  public static int TALON_PORT_FR                = 3;
-  public static int TALON_PORT_BL                = 7;
-  public static int TALON_PORT_BR                = 2;
+  public static int TALON_PORT_FL                = 0;
+  public static int TALON_PORT_FR                = 2;
+  public static int TALON_PORT_BL                = 1;
+  public static int TALON_PORT_BR                = 3; 
 
 }

@@ -15,7 +15,7 @@ public class AutoDrive extends Command {
 
   @Override
   protected void initialize() {
-   followers = TankDrivePath.generate();
+    followers = TankDrivePath.generate();
   }
 
   @Override
@@ -25,10 +25,11 @@ public class AutoDrive extends Command {
       double leftVal = followers[0].calculate(followers[0].getSegment().position); 
       double rightVal = followers[1].calculate(followers[1].getSegment().position); 
 
-      Robot.drivetrain.talon_FL.set(leftVal);
+      /*Robot.drivetrain.talon_FL.set(leftVal);
       Robot.drivetrain.talon_BL.set(leftVal);
       Robot.drivetrain.talon_FR.set(rightVal);
-      Robot.drivetrain.talon_BR.set(rightVal);
+      Robot.drivetrain.talon_BR.set(rightVal);*/
+      System.out.println(leftVal + "||" + rightVal);
       
     } 
   }

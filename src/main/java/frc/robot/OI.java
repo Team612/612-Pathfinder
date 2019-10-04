@@ -36,6 +36,6 @@ public class OI {
   public static JoystickButton gunner_button_RJ   	= new JoystickButton(gunner,10);
 
   public OI(){
-    driver_button_A.whenPressed(new AutoDrive());
+    driver_button_A.whileHeld(new AutoDrive());
   }
 }

@@ -21,10 +21,13 @@ import jaci.pathfinder.modifiers.TankModifier;
 public class TankDrivePath {
    
     public static DistanceFollower[] generate(){
-        Waypoint[] points = {new Waypoint(0, 0, Pathfinder.d2r(0)), 
-            new Waypoint(1, 1, Pathfinder.d2r(0)),
-            new Waypoint(1, 1, Pathfinder.d2r(60))};
-        Trajectory.Config config = new Trajectory.Config(FitMethod.HERMITE_CUBIC, 
+        Waypoint[] points = {
+            new Waypoint(-1, -1, Pathfinder.r2d(0)), 
+            new Waypoint(-2, 1, Pathfinder.r2d(0)),
+            new Waypoint(0, 0, Pathfinder.r2d(60))};
+
+        Trajectory.Config config = new Trajectory.Config(
+                                        FitMethod.HERMITE_CUBIC, 
                                         Trajectory.Config.SAMPLES_HIGH, 
                                         Drivetrain.P, 
                                         Drivetrain.I, 
